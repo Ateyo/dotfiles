@@ -8,3 +8,6 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
+
+FONTFACE="Montserrat"
+FONTSIZE="16x32"
