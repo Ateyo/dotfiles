@@ -2,14 +2,19 @@
 my dotfiles with GNU stow and git
 
 ## install
-Add stow with your prefered package manager
+Add depedencies with your prefered package manager
 
+```
+stow i3 polybar xterm autotiling
+```
+
+## fonts
 [Montserrat](https://fonts.google.com/specimen/Montserrat)
 
 [Iosevka  & Symbols](https://www.nerdfonts.com/font-downloads)
 
-xterm
-autotiling
+[Font Awesome](https://fontawesome.com/)
+
 
 ## how to use
 stow replicates symlinks of ~/.config/ + some others to ~/.dotfiles/ 
