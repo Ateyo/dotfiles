@@ -8,7 +8,7 @@ polybar-msg cmd quit
 
 # Launch bar1
  
-polybar bar1 &
+polybar -r bar1 &
 
 
 echo "Bars launched..."

@@ -254,7 +254,8 @@ gaps outer 0
 
 
 #set wallpaper with feh
-exec_always feh --bg-scale /home/sinje/Pictures/wallpaper.jpg
+#exec_always feh --bg-scale /home/sinje/Pictures/wallpaper.jpg
+exec_always feh -z --bg-scale /home/sinje/Pictures/wallpaper/
 
 assign [class="firefox"] $ws2
 

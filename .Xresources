@@ -120,7 +120,7 @@ XTerm*decTerminalID:        vt382
 ! 8-15: Bright Black, Bright Red, ...
 XTerm*color0:               #212121
 XTerm*color8:               #7f7f7f
-XTerm*color1:               #A00000
+XTerm*color1:               #EA4335
 XTerm*color9:               #FF0000
 XTerm*color2:               #00A000
 XTerm*color10:              #00FF00
