@@ -11,7 +11,28 @@
 
 set $mod Mod1
 
-# Font for window titles. Will also be used by the bar unless a different font
+set $base_900 #343746
+set $base_700 #585E74
+set $base_500 #7B819D
+set $base_100 #D5D9E7
+set $base_050 #EFEFF9
+
+set $complementary #464334
+set $urgent #FFBB00
+
+set $pale_light #DFD0B8
+set $pale_dark #948979
+
+set $codec_blue_light #B7F2F3
+set $codec_blue_mid #ADF1E7
+set $codec_blue_dark #215A56
+set $codec_green_dark #174E2D
+set $codec_green_mid #42AA77
+set $codec_green_light #98EEC4
+
+
+
+## Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Montserrat 10
 
@@ -49,13 +70,14 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec xterm
 
 # kill focused window
-bindsym $mod+Shift+a kill
+bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$base_900" -fg "$base_050" -hlfg "#9575cd" -font "Montserrat 14" 
+
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -107,7 +129,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+q focus parent
+bindsym $mod+Shift+q focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -183,11 +205,36 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+#set wallpaper with feh
+exec_always feh --bg-scale /home/sinje/Pictures/wallpaper.jpg
+
+assign [class="firefox"] $ws2
+### BORDER ###
+
+#colors
+
+#colorclass		#border	#background #text #indicator #child_border
+client.focused 		$base_900 $base_900 $base_050 $base_050 $base_050
+client.focused_inactive $base_700 $base_700 $base_050 $base_050 $base_050
+client.unfocused 	$base_700 $base_700 $base_050 $base_050 $base_050
+client.urgent 		$urgent $urgent $base_900 $base_050 $base_050
+
+hide_edge_borders both
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         status_command i3status
+	colors {
+		background $complementary
+		separator $base_100
+		#		border		background 	text
+		focused_workspace $base_900 $base_900 $base_050
+		inactive_workspace $base_700 $base_700 $base_05
+		urgent_workspace $urgent $urgent $base_050
+	}
 }
 
+#exec --no-startup-id picom --backend glx --config ~/.config/picom/picom.conf" -b
 
-exec_always feh --bg-scale /home/sinje/Pictures/wallpaper.jpg
+exec --no-startup-id ~/xborder/xborders --config ~/.dotfiles/.config/xborder/config.json
