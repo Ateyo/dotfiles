@@ -258,10 +258,6 @@ exec_always feh --bg-scale /home/sinje/Pictures/wallpaper.jpg
 
 assign [class="firefox"] $ws2
 
-#exec --no-startup-id picom --backend glx --config ~/.config/picom/picom.conf" -b
-
-#exec --no-startup-id ~/xborder/xborders --config ~/.dotfiles/.config/xborder/config.json
-
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
 
 exec_always --no-startup-id autotiling
