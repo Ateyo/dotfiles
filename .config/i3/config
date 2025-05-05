@@ -205,10 +205,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-#set wallpaper with feh
-exec_always feh --bg-scale /home/sinje/Pictures/wallpaper.jpg
-
-assign [class="firefox"] $ws2
 ### BORDER ###
 
 #colors
@@ -221,20 +217,51 @@ client.urgent 		$urgent $urgent $base_900 $base_050 $base_050
 
 hide_edge_borders both
 
+# Inner gaps for all windows: space between two adjacent windows (or split containers).
+#gaps inner <gap_size>[px]
+gaps inner 8
+
+# Outer gaps for all windows: space along the screen edges.
+#gaps outer|horizontal|vertical|top|left|bottom|right #<gap_size>[px]
+gaps outer 0
+
+# Inner and outer gaps for all windows on a specific workspace.
+# <ws> can be a workspace number or name.
+#workspace <ws> gaps inner <gap_size>[px]
+#workspace <ws> gaps outer|horizontal|vertical|top|#left|bottom|#right <gap_size>[px]
+
+# Enabling “Smart Gaps” means no gaps will be shown when there is
+# precisely one window or split container on the workspace.
+#
+# inverse_outer only enables outer gaps when there is #exactly one
+# window or split container on the workspace.
+#smart_gaps on|off|inverse_outer
+#smart_gaps on
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-	colors {
-		background $complementary
-		separator $base_100
-		#		border		background 	text
-		focused_workspace $base_900 $base_900 $base_050
-		inactive_workspace $base_700 $base_700 $base_05
-		urgent_workspace $urgent $urgent $base_050
-	}
-}
+#bar {
+#        status_command i3status
+#	colors {
+#		background $complementary
+#		separator $base_100
+#		#		border		background 	text
+#		focused_workspace $base_900 $base_900 $base_050
+#		inactive_workspace $base_700 $base_700 $base_05
+#		urgent_workspace $urgent $urgent $base_050
+#	}
+#}
+
+
+#set wallpaper with feh
+exec_always feh --bg-scale /home/sinje/Pictures/wallpaper.jpg
+
+assign [class="firefox"] $ws2
 
 #exec --no-startup-id picom --backend glx --config ~/.config/picom/picom.conf" -b
 
-exec --no-startup-id ~/xborder/xborders --config ~/.dotfiles/.config/xborder/config.json
+#exec --no-startup-id ~/xborder/xborders --config ~/.dotfiles/.config/xborder/config.json
+
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
+
+exec_always --no-startup-id autotiling
