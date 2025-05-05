@@ -210,9 +210,9 @@ bindsym $mod+r mode "resize"
 #colors
 
 #colorclass		#border	#background #text #indicator #child_border
-client.focused 		$base_900 $base_900 $base_050 $base_050 $base_050
-client.focused_inactive $base_700 $base_700 $base_050 $base_050 $base_050
-client.unfocused 	$base_700 $base_700 $base_050 $base_050 $base_050
+client.focused 		$codec_blue_light $base_700 #FFFFFF $codec_blue_light $codec_blue_light
+client.focused_inactive $base_900 $base_900 $base_050 $base_050 $base_050
+client.unfocused 	$base_900 $base_900 $base_050 $base_050 $base_050
 client.urgent 		$urgent $urgent $base_900 $base_050 $base_050
 
 hide_edge_borders both
@@ -252,6 +252,7 @@ gaps outer 0
 #	}
 #}
 
+#for_window [class="XTerm"] border pixel 2
 
 #set wallpaper with feh
 #exec_always feh --bg-scale /home/sinje/Pictures/wallpaper.jpg
