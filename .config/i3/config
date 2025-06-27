@@ -67,16 +67,18 @@ floating_modifier $mod
 
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
-tiling_drag modifier titlebar
+tiling_drag titlebar
 
 # start a terminal
-bindsym $mod+Return exec xterm
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$base_900" -fg "$base_050" -hlfg "#9575cd" -font "Montserrat 14" 
+#bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$base_900" -fg "$base_050" -hlfg "#9575cd" -font "Montserrat 14" 
+#bindsym $mod+d exec rofi -show combi -combi-modes "window,run,drun" -modes combi
+bindsym $mod+d exec rofi -show drun -opacity "85"
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -178,6 +180,9 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+#lock i3 (calls i3lock)
+bindsym $mod+Shift+semicolon exec --no-startup-id i3lock
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -223,7 +228,7 @@ gaps inner 8
 
 # Outer gaps for all windows: space along the screen edges.
 #gaps outer|horizontal|vertical|top|left|bottom|right #<gap_size>[px]
-gaps outer 0
+gaps outer 8
 
 # Inner and outer gaps for all windows on a specific workspace.
 # <ws> can be a workspace number or name.
@@ -252,14 +257,24 @@ gaps outer 0
 #	}
 #}
 
-#for_window [class="XTerm"] border pixel 2
+#default_border pixel 2
+
+new_window pixel 4
+new_float  pixel 4
 
 #set wallpaper with feh
 #exec_always feh --bg-scale /home/sinje/Pictures/wallpaper.jpg
-exec_always feh -z --bg-scale /home/sinje/Pictures/wallpaper/
+exec_always feh -z --bg-scale /home/sinje/dotfiles/wallpaper/
 
 assign [class="firefox"] $ws2
+
+exec --no-startup-id i3-msg 'workspace 1; exec kitty'
+
+exec firefox
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
 
 exec_always --no-startup-id autotiling
+
+exec --no-startup-id picom
+
